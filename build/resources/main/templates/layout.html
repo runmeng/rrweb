@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(page_title)" lang="en">
+    <meta charset="UTF-8"/>
+    <meta description="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="icon" th:href="@{/assets/favicon.png}" />
+
+    <link rel="stylesheet" th:href="@{/assets/vendor/materialize/css/materialize.css}" />
+    <link rel="stylesheet" th:href="@{/assets/vendor/codrops/css/cs-select.css}" />
+    <link rel="stylesheet" th:href="@{/assets/vendor/codrops/css/cs-skin-border.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" th:href="@{/assets/app.css}" />
+    <!--<link rel="stylesheet" th:href="@{/assets/bootstrap.css}" />-->
+
+    <title th:text="${page_title}">RushRunner</title>
+</head>
+
+<body>
+
+<div th:fragment="nav" class="navbar-fixed">
+    <nav>
+        <div class="container">
+            <a th:href="@{/}" class="brand-logo">RushRunner</a>
+            <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li th:classappend="${#httpServletRequest.servletPath.equals('/restaurant') ? 'active' : ''}"><a th:href="@{/restaurant}">Restaurant</a></li>
+
+                <li th:if="${#httpServletRequest.remoteUser}==null"><a th:href="@{/login}">Log In</a></li>
+                <li th:if="${#httpServletRequest.remoteUser}!=null" class="dropli"><a>My Account</a>
+                    <div class="droplist">
+                    <a>Profile</a>
+                    <a>Orders</a>
+                    <a th:href="@{/logout}">Log Out</a>
+                    </div>
+                </li>
+                <li th:classappend="${#httpServletRequest.servletPath.equals('/favorites') ? 'active' : ''}"><a th:href="@{/login}" class="cart"><img th:src="@{/assets//images/cart.png}" height="30px"/></a></li>
+            </ul>
+        </div>
+    </nav>
+
+</div>
+
+
+<div th:fragment="flash" th:if="${flash != null}" class="container">
+    <div class="message">
+        <i class="right material-icons" data-close="">close</i>
+        <div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}" class="flash"></div>
+    </div>
+</div>
+
+<div th:fragment="scripts">
+    <script th:src="@{/assets/vendor/jquery/jquery-1.11.3.js}"></script>
+    <script th:src="@{/assets/vendor/materialize/js/materialize.js}"></script>
+    <script th:src="@{/assets/vendor/codrops/js/classie.js}"></script>
+    <script th:src="@{/assets/vendor/codrops/js/selectFx.js}"></script>
+    <script th:src="@{/assets/app.js}"></script>
+</div>
+
+<div th:fragment="footer" class="webfooter">
+
+<a th:target="_blank" th:href="@{https://itunes.apple.com/us/app/rushrunner-food-delivery/id953813185}" class="bnn"><img th:src="@{/assets/images/app.png}" width="200px" height="60px;" /></a>
+    <p><a th:href="@{/}">PRIVACY</a> <a th:href="@{/}">TERMS</a> <a th:href="@{/}">BECOME A RUNNER</a> <a th:href="@{/}">CONTACT US</a></p>
+
+    <a class="copyright">&copy; <script type="text/javascript">document.write(new Date().getFullYear());
+    </script> .RushRunner. All Rights Reserved</a>
+</div>
+
+</body>
+
+
+
+</html>

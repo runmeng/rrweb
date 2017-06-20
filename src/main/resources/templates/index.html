@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('RushRunner')"></head>
+<body>
+<div th:replace="layout :: nav"></div>
+
+<div class="onepage" id="pone">
+    <div class="onepage-bg" id="onepagebg">
+
+        <div class="col-md-12 headfontsize">
+            <h1 class="headh1content">Order From the Best Asian<br />
+                Restaurant</h1>
+            <h2>1st delivery free, no minimum, on-demand</h2>
+            <p class="btn-app-store">
+                <a class="btn btn-default btn-lg" th:href="@{/restaurant}">Order Now</a>
+            </p>
+
+        </div>
+</div>
+</div>
+
+<div class="pagetwo-bg" id="pagetwobg">
+    <div class="pagetwo" id="ptwo">
+        <div class="pagetwocontent">
+            <div class="pagetwotext">
+                <h1>Comprehensive Restaurant <br/>
+                    Menus</h1>
+                <p>Menu on RushRunner are available in multiple languages. You can<br/> view dish photos and detailed descriptions and also see the most<br/> popular items ordered by other RushRunner customers. It is never <br/>been so easy to find the best dishes</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout :: scripts"></div>
+
+<div th:replace="layout :: footer"> </div>
+</body>
+</html>

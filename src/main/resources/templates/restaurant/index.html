@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Restaurant')">
+
+</head>
+<body>
+<div th:replace="layout :: nav"></div>
+
+<div class="zippage">
+
+<div th:if="${zipcode}==null" class="addzipcode">
+
+    <form th:action="@{${action}}" method="post">
+
+    <p class="form-signin-heading">Please Enter Delivery Address Zip Code</p>
+
+            <input type="text" placeholder="Zip Code" name="newZip"/>
+
+
+            <button type="submit" class="button">Add ZipCode</button>
+
+</form>
+</div>
+
+<div th:if="${zipcode}!=null" class="updatezipcode">
+    <a>Restaurant to &nbsp; </a><a class="code" th:text="${zipcode}"> ZipCode</a>
+<div class="theform">
+    <form th:action="@{${action}}" method="post" class="form-inline">
+                <input type="text" placeholder="Update Zipcode" name="newZip"/>
+                <button type="submit" class="btn btn-default btn-lg">Update ZipCode</button>
+    </form>
+</div>
+</div>
+</div>
+
+<div th:replace="layout :: scripts"></div>
+
+<div th:replace="layout :: footer"> </div>
+</body>
+</html>

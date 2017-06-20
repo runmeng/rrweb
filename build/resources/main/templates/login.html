@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="layout :: head('Log In')"></head>
+</head>
+<body>
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: flash"></div>
+
+<div th:if="${#httpServletRequest.remoteUser}==null">
+<div class="signinpage" id="signinpage">
+
+    <form th:action="@{/login}" method="post" class="form-signin">
+
+        <h2 class="form-signin-heading">Please login</h2>
+
+
+        <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+        <a th:href="@{/}"> Forget Password/Username</a><br/>
+        <a th:href="@{/signup}"> Not a member?/Sign Up</a>
+    </form>
+    </div>
+</div>
+
+<div th:if="${#httpServletRequest.remoteUser}!=null">
+    <meta http-equiv="refresh" content="0;url=http://localhost:8080/hello" />
+</div>
+
+<div th:replace="layout :: scripts"></div>
+<div th:replace="layout :: footer"> </div>
+</body>
+</html>
